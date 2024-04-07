@@ -6,7 +6,7 @@
 | normalized (batched) | ![](https://github.com/irajmoradi/twitter_postgres_parallel/workflows/tests_normalizedbatch_sequential/badge.svg) |  ![](https://github.com/irajmoradi/twitter_postgres_parallel/workflows/tests_normalizedbatch_parallel/badge.svg) |
 | denormalized | ![](https://github.com/irajmoradi/twitter_postgres_parallel/workflows/tests_denormalized_sequential/badge.svg) | ![](https://github.com/irajmoradi/twitter_postgres_parallel/workflows/tests_denormalized_parallel/badge.svg) |
 
-In this assignment, you will learn how to load data into postgres much faster using two techniques:
+In This assignment, you will learn how to load data into postgres much faster using two techniques:
 1. batch loading (i.e. running the INSERT command on more than one row at a time)
 1. and parallel loading.
 
