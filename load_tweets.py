@@ -178,7 +178,7 @@ def insert_tweet(connection,tweet):
                 connection.execute(sql, {'id_users': user_id})
         user_id = tweet['user']['id']
         user_exists = connection.execute(sqlalchemy.sql.text('''SELECT 1 FROM users WHERE id_users = :id_users'''), {'id_users': user_id}).fetchone()
-        sql = sqlalchemy.sql.text('''INSERT INTO users (id_users) VALUES (:id_users), ON CONFLICT DO NOTHING''')
+        sql = sqlalchemy.sql.text('''INSERT INTO users (id_users) VALUES (:id_users) ON CONFLICT DO NOTHING''')
         connection.execute(sql, {'id_users': user_id})
         # insert the tweet
         sql=sqlalchemy.sql.text(f''' 
