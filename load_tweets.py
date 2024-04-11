@@ -178,9 +178,8 @@ def insert_tweet(connection,tweet):
                 connection.execute(sql, {'id_users': user_id})
         user_id = tweet['user']['id']
         user_exists = connection.execute(sqlalchemy.sql.text('''SELECT 1 FROM users WHERE id_users = :id_users'''), {'id_users': user_id}).fetchone()
-        if not user_exists:
-            sql = sqlalchemy.sql.text('''INSERT INTO users (id_users) VALUES (:id_users)''')
-            connection.execute(sql, {'id_users': user_id})
+        sql = sqlalchemy.sql.text('''INSERT INTO users (id_users) VALUES (:id_users), ON CONFLICT DO NOTHING''')
+        connection.execute(sql, {'id_users': user_id})
         # insert the tweet
         sql=sqlalchemy.sql.text(f''' 
 INSERT INTO tweets (id_tweets, text, id_users, source, in_reply_to_user_id, created_at, quote_count, favorite_count, quoted_status_id, retweet_count, lang, in_reply_to_status_id, country_code, state_code, place_name, geo)
